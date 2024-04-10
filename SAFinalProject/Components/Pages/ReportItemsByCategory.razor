@@ -1,0 +1,23 @@
+﻿@page "/report/itemsByCategory"
+
+<h3>Report: Items By Category</h3>
+
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Category ID</th>
+			<th>Category Name</th>
+			<th>Equipment Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var salesByRentalDate in salesByRentalDateList)
+		{
+			<tr>
+				<td>@salesByRentalDate.RentalDate.Date.ToString("d")</td>
+				<td>@salesByRentalDate.Cost</td>
+			</tr>
+		}
+	</tbody>
+</table>

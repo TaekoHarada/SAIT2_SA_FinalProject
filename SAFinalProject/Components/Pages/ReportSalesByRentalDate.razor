@@ -1,0 +1,22 @@
+﻿@page "/report/salesByRentalDate"
+
+<h3>Report: Sales By Rental Date</h3>
+
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Rental Date</th>
+			<th>Sales</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var salesByRentalDate in salesByRentalDateList)
+		{
+			<tr>
+				<td>@salesByRentalDate.RentalDate.Date.ToString("d")</td>
+				<td>@salesByRentalDate.Cost</td>
+			</tr>
+		}
+	</tbody>
+</table>

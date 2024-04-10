@@ -1,0 +1,52 @@
+﻿@page "/customerList"
+
+<h1>Customer List</h1>
+
+	<form class="form-control bg-primary bg-opacity-10 border rounded mt-4 mb-2">
+		<div class="row g-3">
+			<div class="col-auto">
+				<label for="last_name" class="col-form-label fw-bold">Last Name:</label>
+				<InputText id="last_name" @bind-Value="@LastName" placeholder="LastName" class="form-control  form-control-sm mb-3" />
+			</div>
+			<div class="col-auto">
+				<label for="first_name" class="col-form-label fw-bold">First Name:</label>
+				<InputText id="first_name" @bind-Value="@FirstName" placeholder="FirstName" class="form-control form-control-sm mb-3" />
+			</div>
+			<div class="col-3 position-relative">
+				<button @onclick="() => SearchCustomer()" @onclick:preventDefault="true" class="btn btn-primary btn-sm position-absolute bottom-0 mb-3">Search</button>
+			</div>
+		</div>
+	</form>
+
+<div>
+	<button @onclick="() => AddCustomer()" class="btn btn-primary btn-sm mb-3">Add New</button>
+
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Last Name</th>
+			<th>First Name</th>
+			<th>Phone</th>
+			<th>E-mail</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var customer in customers)
+		{
+			<tr>
+				<td>@customer.CustomerId</td>
+				<td>@customer.LastName</td>
+				<td>@customer.FirstName</td>
+				<td>@customer.Phone</td>
+				<td>@customer.Email</td>
+				<td class="text-center">
+					<button @onclick="() => EditCustomer(customer)" class="btn btn-sm btn-warning">Edit</button>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

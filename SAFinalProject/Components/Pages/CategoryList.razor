@@ -1,0 +1,33 @@
+﻿@page "/categoryList"
+
+<h1>Category List</h1>
+
+<div>
+	<button @onclick="() => AddCategoryHandler()" class="btn btn-primary btn-sm mb-3">Add New</button>
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Category ID</th>
+			<th>Category Name</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var category in categories)
+		{
+			<tr>
+				<td>@category.CategoryId</td>
+				<td>@category.CategoryName</td>
+				<td class="text-center">
+					<button @onclick="() => EditCategoryHandler(category)" class="btn btn-sm btn-warning">Edit</button>
+				</td>
+				<td class="text-center">
+					<button @onclick="() => DeleteCategoryHandler(category)" class="btn btn-sm btn-danger">Delete</button>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

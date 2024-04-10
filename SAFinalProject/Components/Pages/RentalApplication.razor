@@ -1,0 +1,120 @@
+﻿@page "/rentalApplication/{CustomerId}"
+
+<div>Rental Application Customer List > Rental Application</div>
+<h3>Rental Application</h3>
+<div>
+	<button @onclick="() => ReturnPageHandler()" class="btn btn-secondary btn-sm mb-3">Return To Customer List</button>
+</div>
+
+
+<div class="container bg-primary bg-opacity-10 border rounded p-3">
+	<div class="row">
+		<div class="col-auto fw-bold">Customer Name: </div>
+		<div class="col-auto">@customer.FirstName   @customer.LastName</div>
+	</div>
+	<div class="row">
+		<div class="col-auto fw-bold">Phone #: </div>
+		<div class="col-auto">@customer.Phone</div>
+	</div>
+	<div class="row">
+		<div class="col-auto fw-bold">E-mail: </div>
+		<div class="col-auto">@customer.Email</div>
+	</div>
+</div>
+
+<form class="form-control bg-primary bg-opacity-10 border rounded mt-3 mb-4">
+	<div class="row g-3">
+		<div class="col-auto">
+			<label for="name" class="col-form-label fw-bold">Search Equipment for Rental:</label>
+			<InputText id="name" @bind-Value="@EquipmentName" placeholder="EquipmentName  " class="form-control  form-control-sm mb-3" />
+		</div>
+		<div class="col-3 position-relative">
+			<button @onclick="() => SearchEquipmentHandler()" @onclick:preventDefault="true" class="btn btn-primary btn-sm position-absolute bottom-0 mb-3">Search</button>
+		</div>
+	</div>
+
+	<table class="table table-bordere table-container">
+		<thead>
+			<tr>
+				<th>Equipment Name</th>
+				<th>Description</th>
+				<th>Cost</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var equipment in equipments)
+			{
+				<tr>
+					<td>@equipment.EquipmentName</td>
+					<td>@equipment.Description</td>
+					<td>@equipment.DailyRentalCost</td>
+					<td class="text-center">
+						<button @onclick="() => RentalEquipmentHandler(equipment)" class="btn btn-sm btn-warning  fw-bold">Rental This!</button>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</form>
+
+<h4>Your Rental List</h4>
+<table class="table table-bordered table-container">
+	<thead>
+		<tr>
+			<th>Equipment Name</th>
+			<th>Rental Date</th>
+			<th>Return Date</th>
+			<th>Cost</th>
+			<th>Status</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var rentalEquipment in rentalEquipments)
+		{
+			<tr>
+				<td>@rentalEquipment.EquipmentName</td>
+				<td>@rentalEquipment.RentalDate.Date.ToString("d")</td>
+				<td>
+					@if (rentalEquipment.ReturnDate != default(DateTime))
+					{
+						@rentalEquipment.ReturnDate.Date.ToString("d")
+					}
+				</td>
+				<td>@rentalEquipment.RentalCost</td>
+				<td>
+					@if (rentalEquipment.RentalStatus == 0)
+					{
+						<text>Not Renting</text>
+					}
+					else if (rentalEquipment.RentalStatus == 1)
+					{
+						<text>Renting</text>
+					}
+					else if (rentalEquipment.RentalStatus == 2)
+					{
+						<text>Returned</text>
+					}
+					else
+					{
+						@rentalEquipment.RentalStatus
+					}
+				</td>
+				<td class="text-center">
+					@if (rentalEquipment.RentalStatus == 0)
+					{
+						<button @onclick="() => DeleteEquipmentHandler(rentalEquipment)" class="btn btn-sm btn-danger">Delete</button>
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<div>
+	<button @onclick="() => ReturnPageHandler()" class="btn btn-secondary btn-sm mb-3">Return To Customer List</button>
+</div>
+
+
+

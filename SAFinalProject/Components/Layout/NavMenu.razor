@@ -1,0 +1,45 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="rentalApplicationCustomerList">SAFinalProject</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <div class="text-white mt-5 mb-3 ms-3 fs-4"><i class="bi bi-people-fill"></i>Customer Menu</div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="rentalApplicationCustomerList" Match="NavLinkMatch.All">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Rental Application
+            </NavLink>
+        </div>
+
+        <div class="text-white mt-5 mb-3 ms-3 fs-4"><i class="bi bi-person-fill-gear"></i>Owner Menu</div>
+        <div class="nav-item px-3"> 
+            <NavLink class="nav-link" href="rentalManagementCustomerList" Match="NavLinkMatch.All">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Rental Management
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="customerList">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Customer Management
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="equipmentList">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Equipment Management
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="categoryList">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Category Management
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="report">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Reports
+            </NavLink>
+        </div>
+    </nav>
+</div>
